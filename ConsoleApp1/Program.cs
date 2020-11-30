@@ -11,7 +11,8 @@ namespace ConsoleApp1
         static void Main(string[] args)
         {
             //NameChecker();
-            SumofTwoNumber();
+            //SumofTwoNumber();
+            primNumbers();
         }
 
         public static void NameChecker()
@@ -95,5 +96,58 @@ namespace ConsoleApp1
             Console.ReadLine();
             return sum;
         }
+
+
+        // Add all prime numbers within a specifed range
+        public static ulong[] primNumbers()
+        {
+
+            ulong sum = 0;
+            List<ulong> primeList = new List<ulong>();
+            ulong[] numbers = new ulong[2147483647];
+            for (ulong i = 2; i < 2147483647; i++)
+            {
+
+                numbers[i] = i;
+
+                ulong divider = 2;
+                ulong maxDivider = (ulong)Math.Sqrt(numbers[i]);
+                bool prime = true;
+
+                while (prime && divider <= maxDivider)
+                {
+                    if (numbers[i] % divider == 0)
+                    {
+                        prime = false;
+
+                    }
+
+                    divider++;
+
+                }
+                if (prime)
+                {
+
+                    Console.Write(numbers[i] + " ");
+                    primeList.Add(numbers[i]);
+
+                   sum += numbers[i];
+
+                }
+
+            }
+            Console.WriteLine();
+            Console.WriteLine();
+            Console.WriteLine();
+
+            Console.WriteLine("The sum of all the elemts in the array is "  + sum);
+
+            Console.WriteLine("The total number of element is " + primeList.Count());
+
+            Console.ReadLine();
+            return numbers;
+
+        }
+
     }
 }
